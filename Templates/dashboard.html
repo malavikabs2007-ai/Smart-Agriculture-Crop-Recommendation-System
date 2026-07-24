@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+AgriAI Analytics Dashboard
+</title>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+
+
+<body>
+
+
+<nav>
+
+<div class="logo">
+🌱 AgriAI
+</div>
+
+
+<div class="nav-links">
+
+<a href="/">
+Home
+</a>
+
+
+<a href="/dashboard">
+Dashboard
+</a>
+
+</div>
+
+</nav>
+
+
+
+
+
+<section class="dashboard-header">
+
+
+<h1>
+📊 Agriculture Analytics Dashboard
+</h1>
+
+
+<p>
+AI based soil and environmental analysis
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+<div class="dashboard-container">
+
+
+
+<div class="chart-card">
+
+
+<h2>
+🌱 Soil Nutrient Analysis
+</h2>
+
+
+<canvas id="soilChart"></canvas>
+
+
+</div>
+
+
+
+
+
+<div class="chart-card">
+
+
+<h2>
+🌦 Environmental Analysis
+</h2>
+
+
+<canvas id="weatherChart"></canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="model-card">
+
+
+<h2>
+🤖 Machine Learning Model
+</h2>
+
+
+<p>
+
+<b>Model:</b>
+
+{{model_info.model}}
+
+</p>
+
+
+
+<p>
+
+<b>Accuracy:</b>
+
+{{model_info.accuracy}}
+
+</p>
+
+
+
+<h3>
+Features Used
+</h3>
+
+
+<ul>
+
+{% for feature in model_info.features %}
+
+<li>
+{{feature}}
+</li>
+
+{% endfor %}
+
+</ul>
+
+
+
+</div>
+
+
+
+
+<a href="/">
+
+<button class="back-btn">
+
+⬅ Back To Prediction
+
+</button>
+
+
+</a>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<footer>
+
+<h3>
+Smart Agriculture AI
+</h3>
+
+<p>
+Machine Learning Powered Farming
+</p>
+
+</footer>
+
+
+
+
+
+
+<script>
+
+
+new Chart(
+
+document.getElementById("soilChart"),
+
+{
+
+type:"bar",
+
+data:{
+
+labels:[
+
+"Nitrogen",
+
+"Phosphorus",
+
+"Potassium"
+
+],
+
+
+datasets:[{
+
+label:"Soil Values",
+
+data:[
+
+{{data.N}},
+
+{{data.P}},
+
+{{data.K}}
+
+]
+
+}]
+
+}
+
+}
+
+);
+
+
+
+
+
+new Chart(
+
+document.getElementById("weatherChart"),
+
+{
+
+type:"line",
+
+data:{
+
+labels:[
+
+"Temperature",
+
+"Humidity",
+
+"Rainfall"
+
+],
+
+
+datasets:[{
+
+label:"Environmental Values",
+
+data:[
+
+{{data.temperature}},
+
+{{data.humidity}},
+
+{{data.rainfall}}
+
+]
+
+}]
+
+}
+
+}
+
+);
+
+
+
+</script>
+
+
+
+
+</body>
+
+</html>

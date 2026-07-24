@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+Smart Agriculture AI
+</title>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+
+
+<body>
+
+
+<!-- Navigation Bar -->
+
+<nav>
+
+<div class="logo">
+🌱 AgriAI
+</div>
+
+
+<div class="nav-links">
+
+<a href="/">
+Home
+</a>
+
+<a href="/dashboard">
+Analytics
+</a>
+
+</div>
+
+</nav>
+
+
+
+
+
+<!-- Hero Section -->
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<h1>
+Smart Agriculture
+<br>
+AI System
+</h1>
+
+
+<p>
+Intelligent Crop Recommendation using
+Machine Learning
+</p>
+
+
+<p>
+Optimize farming decisions using soil
+and environmental data
+</p>
+
+
+
+<a href="#prediction">
+
+<button class="hero-btn">
+Start Prediction 🚀
+</button>
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- Prediction Section -->
+
+
+<section id="prediction" class="main-section">
+
+
+
+<div class="prediction-card">
+
+
+<h2>
+🌾 Crop Recommendation
+</h2>
+
+
+<p>
+Enter agricultural parameters to find the most suitable crop.
+</p>
+
+
+
+
+<form action="/predict" method="POST">
+
+
+
+<div class="form-grid">
+
+
+
+<div class="field">
+
+<label>
+Nitrogen (N)
+</label>
+
+<input 
+type="number"
+step="any"
+name="N"
+placeholder="Enter Nitrogen"
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+<label>
+Phosphorus (P)
+</label>
+
+<input 
+type="number"
+step="any"
+name="P"
+placeholder="Enter Phosphorus"
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+<label>
+Potassium (K)
+</label>
+
+<input 
+type="number"
+step="any"
+name="K"
+placeholder="Enter Potassium"
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+<label>
+Temperature
+</label>
+
+<input 
+type="number"
+step="any"
+name="temperature"
+placeholder="°C"
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+<label>
+Humidity
+</label>
+
+<input 
+type="number"
+step="any"
+name="humidity"
+placeholder="%"
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+<label>
+Soil pH
+</label>
+
+<input 
+type="number"
+step="any"
+name="ph"
+placeholder="pH value"
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+<label>
+Rainfall
+</label>
+
+<input 
+type="number"
+step="any"
+name="rainfall"
+placeholder="mm"
+required>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<button class="predict-btn">
+
+🌱 Predict Best Crop
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- Result Section -->
+
+
+{% if prediction %}
+
+
+
+<section class="result-section">
+
+
+<div class="result-box">
+
+
+<div class="icon">
+🌾
+</div>
+
+
+<h2>
+Recommended Crop
+</h2>
+
+
+<h1>
+{{prediction}}
+</h1>
+
+
+
+<div class="score">
+
+🤖 Confidence Score
+
+<br>
+
+<strong>
+{{confidence}}%
+</strong>
+
+</div>
+
+
+
+<div class="fertilizer">
+
+
+<h3>
+🧪 Fertilizer Advice
+</h3>
+
+
+<p>
+{{fertilizer}}
+</p>
+
+
+</div>
+
+
+
+
+<a href="/dashboard">
+
+
+<button class="dashboard-btn">
+
+📊 View Analytics Dashboard
+
+</button>
+
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+<!-- Features Section -->
+
+
+<section class="features">
+
+
+<div class="feature-card">
+
+<h2>
+🤖
+</h2>
+
+<h3>
+AI Prediction
+</h3>
+
+<p>
+Machine learning models analyze agricultural data.
+</p>
+
+</div>
+
+
+
+
+<div class="feature-card">
+
+<h2>
+🌱
+</h2>
+
+<h3>
+Smart Farming
+</h3>
+
+<p>
+Helps farmers select suitable crops.
+</p>
+
+</div>
+
+
+
+
+
+<div class="feature-card">
+
+<h2>
+📊
+</h2>
+
+<h3>
+Analytics
+</h3>
+
+<p>
+Visualize soil and climate parameters.
+</p>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<footer>
+
+<h3>
+Smart Agriculture AI
+</h3>
+
+<p>
+Powered by Machine Learning | Smart Farming Solution
+</p>
+
+
+</footer>
+
+
+
+</body>
+
+</html>
